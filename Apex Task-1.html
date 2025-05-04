@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Planet Software solutions pvt ltd</title>
+    <style>
+      /* Styling for body section */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    /* Style for head section */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-color: #ffffff;
+      border-bottom: 2px solid green;
+      position: relative;
+    }
+/* style for logo section */
+    .logo {
+      position: absolute;
+      left: 20px;
+    }
+
+    .logo img {
+      max-height: 50px;
+    }
+/* style for company name section */
+    .company-name {
+      font-size: 28px;
+      font-weight: bold;
+      color: green;
+    }
+/* style for nav links */
+    nav{
+        background-color:green;
+        text-align: center;
+        padding: 9px 0;
+    }
+    nav a{
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 20px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+    }
+    /* appplying hover effect for nav links */
+    nav a:hover {
+        color: #ff6347;
+        text-decoration: underline;
+    }
+    section {
+        padding: 25px;
+        margin: 20px auto;
+        max-width: 900px;
+        box-shadow: 0 2px 10px rgba(41, 63, 190, 0.737);
+        transition: box-shadow 0.3s ease;
+        }
+    section:hover {
+        box-shadow: 0 6px 18px rgb(231, 218, 30);
+    }
+    /* style for about section */ 
+    #About {
+        background-color: #13a550;
+        padding: 40px;
+        color: #000;
+    }
+    /* style for contact section */
+    #ContactUs{
+      background-color: green;
+    }
+    /* style for footer section */
+    .footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #333;
+    }
+    </style>
+  </head>
+<body>
+  <!-- This is logo section -->
+    <div class="header">
+        <div class="logo">
+            <img src="https://apexplanet.in/wp-content/uploads/2024/07/apexplanet-low-resolution-logo-color-on-transparent-background.png" alt="Apexplanetlogo">
+        </div>
+        <div class="company-name">
+          ApexPlanet software Pvt Ltd
+        </div>
+      </div>
+      <!-- This is nav section -->
+    <nav>
+        <a href="#Home">Home</a> |
+        <a href="#About">About</a> |
+        <a href="#Internships">Internships</a> |
+        <a href="#ContactUs">Contact US</a>
+    </nav>
+    <!-- this is home section -->
+    <section id="Home">
+        <h4>APEXPLANET SOFTWARE PVT LTD</h4>
+        <p>This heading emphasizes the company's committement to innovation and highlights its expertise in delivering advanced software solutions.It portrays Apexplanet Software Pvt.Ltd as a forward-thinking and reliable partner in the tech industry.</p>
+    </section>
+    <!-- this is about section -->
+    <section id="About">
+        <h2>About</h2>
+        <p>Welcome to ApexPlanet Software Pvt. Ltd. where digital innovation meets strategic marketing excellence. We are a passionate team of digital marketing professionals dedicated to helping businesses of all sizes thrive in the online world. Our mission is to empower brands with the tools and strategies they need to succeed in today’s ever-evolving digital landscape. </p>
+    </section>
+    <!-- this is internships section -->
+    <section id="Internships">
+        <h2>Internships</h2>
+        <p>Join To Our Internship Program. With Provide AICTE Approved Certificate. Digital Marketing Services.</p>
+        <h5>Web Development (HTML, CSS & JAVASCRIPT) Internship:<input type="button" onclick="showAlert1()" value="Apply now"></h5>
+        <h5>Web Development (PHP & MySQL) Internship:<input type="button" onclick="showAlert1()" value="Apply now"></h5>
+        <h5>App Development Internship:<input type="button" onclick="showAlert1()" value="Apply now"></h5>
+          
+        <input type="button" onclick="showAlert2()" value="View more Info">
+    </section>
+    <!-- this is contact section -->
+    <section id="ContactUs">
+      <h2>Contact Us</h2>
+      <center> 
+        <form>
+        Enter ur name:<input type="text"><br><br>
+        Enter ur number: <input type="text"><br><br>
+       <input type="button" onclick="showAlert()" value="submit">
+      </form>
+    </center>
+    </section>
+    <!-- this is footer section -->
+    <footer class="footer">
+      &copy; 2025 ApexPlanet Software Solutions Pvt Ltd. All rights reserved.
+    </footer>
+    <script>
+      // js code for submit button
+      function showAlert() {
+      alert("Succesfully submitted your details..!!");
+    }
+    // js code for apply button
+    function showAlert1() {
+      alert("You are successfully applied for an internship..!!");
+    }
+    // js code for view more button
+    function showAlert2() {
+      alert("To know more about the internships,visit our official page..!!");
+    }
+    </script>
+</body>
+</html>
