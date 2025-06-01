@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffdd57;
+    }
+    section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+    .product, .todo-list li {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+    .product:hover {
+      transform: scale(1.02);
+    }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .todo-input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 60%;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    button:hover {
+      background-color: #34495e;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2c3e50;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Portfolio</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#todo">To-Do List</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a passionate web developer skilled in HTML, CSS, and JavaScript. I enjoy building sleek and user-friendly web applications that solve real-world problems.</p>
+  </section>
+
+  
+
+  <section id="todo">
+    <h2>To-Do List</h2>
+    <input class="todo-input" id="taskInput" type="text" placeholder="Enter a task" />
+    <button onclick="addTask()">Add Task</button>
+    <ul class="todo-list" id="taskList"></ul>
+  </section>
+
+  <section id="products">
+    <h2>Product Listing</h2>
+    <label for="sortOption">Sort by:</label>
+    <select id="sortOption" onchange="sortProducts()">
+      <option value="price">Price</option>
+      <option value="rating">Rating</option>
+    </select>
+    <div class="product-list" id="productContainer"></div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:durgadevibikkina123@gmail.com">durgadevibikkina123@gmail.com</a></p>
+    <p>LinkedIn: <a href="linkedin.com/in/durga-devi-swaroopa-bikkina-a784b0255" target="_blank">linkedin.com/in/durga-devi-swaroopa-bikkina-a784b0255</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 My Portfolio. All rights reserved.
+  </footer>
+
+  <script>
+    // To-Do List Logic
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+
+    function loadTasks() {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      taskList.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.textContent = task;
+        li.addEventListener('click', () => removeTask(index));
+        taskList.appendChild(li);
+      });
+    }
+
+    function addTask() {
+      const task = taskInput.value.trim();
+      if (task) {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.push(task);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        taskInput.value = '';
+        loadTasks();
+      }
+    }
+
+    function removeTask(index) {
+      let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+    }
+
+    loadTasks();
+
+    // Product List Logic
+    const products = [
+      { name: 'Laptop', price: 999, rating: 4.5 },
+      { name: 'Smartphone', price: 499, rating: 4.7 },
+      { name: 'Headphones', price: 99, rating: 4.2 },
+      { name: 'Smartwatch', price: 199, rating: 4.3 },
+      { name: 'Tablet', price: 299, rating: 4.4 },
+      { name: 'Keyboard', price: 49, rating: 4.0 },
+    ];
+
+    function renderProducts(productList) {
+      const container = document.getElementById('productContainer');
+      container.innerHTML = '';
+      productList.forEach(product => {
+        const div = document.createElement('div');
+        div.className = 'product';
+        div.innerHTML = `
+          <h4>${product.name}</h4>
+          <p>Price: $${product.price}</p>
+          <p>Rating: ${product.rating} / 5</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function sortProducts() {
+      const option = document.getElementById('sortOption').value;
+      let sorted;
+      if (option === 'price') {
+        sorted = [...products].sort((a, b) => a.price - b.price);
+      } else {
+        sorted = [...products].sort((a, b) => b.rating - a.rating);
+      }
+      renderProducts(sorted);
+    }
+
+    renderProducts(products);
+  </script>
+</body>
+</html>
